@@ -1,0 +1,70 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'include/head.html' %}
+
+<body>
+
+    <!-- Navigation -->
+    {% include 'include/navbar.html' %}
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url({% static 'img/home-bg.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10">
+                    <div class="site-heading">
+                        <h1>Hello {{request.user}} </h1>
+                        <hr class="small">
+                        <span class="subheading">Welcome to my Blog created with Django Framework</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+
+
+
+
+    <div class="container" style="background-image: url({% static 'img/bg.jpg' %})">
+        <div class="row">
+            <div class="col-lg-10 col-md-8 col-md-offset-1">
+                <div class="post-preview">
+                {% for blog in blogs%}
+                {% if blog.publish %}
+                <div><img src={{blog.image.url}} align="left" height="200px" width="200px"></div>
+                   <div class="col-md-8"><a href="{% url 'detail' blog.pk %}"><h2>{{blog.title | truncatechars:14}}</h2></a>
+                        <h3 class="post-subtitle">
+                           {{blog.content | truncatewords:15 }}
+                        </h3>
+                    <h6>
+                    <p class="post-meta">Published By :- {{blog.author}}<br>
+                   Publish Date :- {{blog.publish_date}}</p></h6>
+                    <hr>
+                    </div>
+                {% endif %}
+                {% endfor %}  
+                 <hr>     
+                </div>
+               
+               
+                <ul class="pager">
+                    <li class="next">
+                        <a href="#">Older Posts &rarr;</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <!-- Footer -->
+    {% include 'include/footer.html' %}
+    {% include 'include/javascript.html' %}
+</body>
+
+</html>

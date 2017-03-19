@@ -1,0 +1,29 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'include/head.html' %}
+<body>
+	{% include 'include/navbar.html' %}
+	<header class="intro-header" style="background-image: url({% static 'img/create.jpg' %})">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="page-heading">
+                        <h1 >New Post</h1>
+                        <hr class="small">
+                        <span class="subheading">Let the world know what you're thinking of...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+<div class="col-md-10">
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+	{{form.as_p}}
+	<input type ="submit" value="Save">
+</form>
+{% include 'include/footer.html' %}
+{% include 'include/javascript.html' %}
+</div>
+</body>

@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'include/head.html' %}
+<body>
+
+    <!-- Navigation -->
+    {% include 'include/navbar.html'%}
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url({{blog.image.url}});">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="post-heading">
+                        <h1 style="color: rgb(255,0,0);">{{blog.title}}</h1>
+                        <h6 style="color: rgb(0,100,150)" align="right">(on {{blog.category}})</h4>
+                        <br><hr><br>
+                        <h5 style="font-family: sans-serif; padding-top: 20px; text-decoration: all; word-spacing: 8px; background-color: black">{{blog.content}}</h5>
+                        <span class="meta">Posted by <a href="#">{{blog.author}}</a> on {{blog.publish_date}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+
+    <!-- Footer -->
+   {% include 'include/footer.html' %}
+    {% include 'include/javascript.html' %}
+
+</body>
+
+</html>
